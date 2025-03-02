@@ -19,7 +19,10 @@ var ws = new WebServer();
 Thread monitoringThread = new Thread(ws.MonitorQueue);
 monitoringThread.Start();
 // 1. Enqueue the requests
-Console.WriteLine("Server is running. Type 'exit' to stop.");
+Console.WriteLine("Server is running.");
+Console.WriteLine("Type 'b' to book a ticket.");
+Console.WriteLine("Type 'c' to cancel.");
+Console.WriteLine("Type 'exit' to stop.");
 while (true)
 {
     string? input = Console.ReadLine();
@@ -31,3 +34,6 @@ while (true)
     ws.SubmitRequest(input);
 }
 // ============================================================
+
+var xl = new ExclusiveLock();
+xl.Demo();
