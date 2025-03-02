@@ -38,35 +38,48 @@ namespace Multithreading
             // Simulate processing time
             //Thread.Sleep(2000);
 
-            lock(ticketsLock)
+            //lock(ticketsLock)
+            if (Monitor.TryEnter(ticketsLock, 1000))
             {
-                if (input.ToLower() == "b")
+                try
                 {
-                    if (availableTickets > 0)
+                    if (input.ToLower() == "b")
                     {
-                        availableTickets--;
-                        Console.WriteLine();
-                        Console.WriteLine($"You seat is booked. {availableTickets} seats are still available.");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"No tickets are available.");
-                    }
+                        if (availableTickets > 0)
+                        {
+                            availableTickets--;
+                            Console.WriteLine();
+                            Console.WriteLine($"You seat is booked. {availableTickets} seats are still available.");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"No tickets are available.");
+                        }
 
+                    }
+                    else if (input.ToLower() == "c")
+                    {
+                        if (availableTickets < 10)
+                        {
+                            availableTickets++;
+                            Console.WriteLine();
+                            Console.WriteLine($"You booking is cancelled. {availableTickets} seats are still available.");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"You cannot cancel a booking at this time.");
+                        }
+                    }
                 }
-                else if (input.ToLower() == "c")
+                catch (Exception e) { Console.WriteLine("Error: " + e.ToString()); }
+                finally
                 {
-                    if (availableTickets < 10)
-                    {
-                        availableTickets++;
-                        Console.WriteLine();
-                        Console.WriteLine($"You booking is cancelled. {availableTickets} seats are still available.");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"You cannot cancel a booking at this time.");
-                    }
+                    Monitor.Exit(ticketsLock);
                 }
+            }
+            else
+            {
+                Console.WriteLine("The system is busy.");
             }
         }
     }
