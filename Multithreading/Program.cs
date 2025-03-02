@@ -15,25 +15,28 @@ using Multithreading;
 // ============================================================
 // Multithreaded webserver demo
 // ============================================================
-var ws = new WebServer();
-Thread monitoringThread = new Thread(ws.MonitorQueue);
-monitoringThread.Start();
-// 1. Enqueue the requests
-Console.WriteLine("Server is running.");
-Console.WriteLine("Type 'b' to book a ticket.");
-Console.WriteLine("Type 'c' to cancel.");
-Console.WriteLine("Type 'exit' to stop.");
-while (true)
-{
-    string? input = Console.ReadLine();
-    if (input?.ToLower() == "exit")
-    {
-        break;
-    }
+//var ws = new WebServer();
+//Thread monitoringThread = new Thread(ws.MonitorQueue);
+//monitoringThread.Start();
+//// 1. Enqueue the requests
+//Console.WriteLine("Server is running.");
+//Console.WriteLine("Type 'b' to book a ticket.");
+//Console.WriteLine("Type 'c' to cancel.");
+//Console.WriteLine("Type 'exit' to stop.");
+//while (true)
+//{
+//    string? input = Console.ReadLine();
+//    if (input?.ToLower() == "exit")
+//    {
+//        break;
+//    }
 
-    ws.SubmitRequest(input);
-}
+//    ws.SubmitRequest(input);
+//}
 // ============================================================
 
-var xl = new ExclusiveLock();
-xl.Demo();
+//var xl = new ExclusiveLock();
+//xl.Demo();
+
+var mx = new MutexDemo();
+mx.Demo();
