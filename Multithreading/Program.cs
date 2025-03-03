@@ -47,5 +47,8 @@ using Multithreading;
 //var ase = new AutoResetEventDemo();
 //ase.Demo();
 
-var ms = new ManualResetEventDemo();
-ms.Demo();
+//var ms = new ManualResetEventDemo();
+//ms.Demo();
+
+var tw= new TwoWaySignalingDemo();
+tw.Demo();
