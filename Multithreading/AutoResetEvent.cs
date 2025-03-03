@@ -16,25 +16,32 @@ namespace Multithreading
 
             Console.WriteLine("Server is running. Type 'go' to proceed and  'exit' to stop.");
 
-            // Start the worker thread
-            for (int i = 0; i < 3; i++)
+            try 
             {
-                Thread workerThread = new Thread(Worker);
-                workerThread.Name = $"Worker {i + 1}";
-                workerThread.Start();
-            }
-
-            // Main thread receives user input
-
-            while (true)
-            {
-                userInput = Console.ReadLine();
-
-                // Signal the worker thread if input is "go"
-                if (userInput.ToLower() == "go")
+                // Start the worker thread
+                for (int i = 0; i < 3; i++)
                 {
-                    autoResetEvent.Set();
+                    Thread workerThread = new Thread(Worker);
+                    workerThread.Name = $"Worker {i + 1}";
+                    workerThread.Start();
                 }
+
+                // Main thread receives user input
+
+                while (true)
+                {
+                    userInput = Console.ReadLine();
+
+                    // Signal the worker thread if input is "go"
+                    if (userInput.ToLower() == "go")
+                    {
+                        autoResetEvent.Set();
+                    }
+                }
+            }
+            finally
+            {
+                autoResetEvent.Dispose();
             }
         }
 

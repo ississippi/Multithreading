@@ -44,6 +44,8 @@ using Multithreading;
 //var sm = new SemaphoreDemo();
 //sm.Demo();
 
-var ase = new AutoResetEventDemo();
-ase.Demo();
+//var ase = new AutoResetEventDemo();
+//ase.Demo();
 
+var ms = new ManualResetEventDemo();
+ms.Demo();
