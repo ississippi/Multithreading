@@ -38,5 +38,8 @@ using Multithreading;
 //var xl = new ExclusiveLock();
 //xl.Demo();
 
-var mx = new MutexDemo();
-mx.Demo();
+//var mx = new MutexDemo();
+//mx.Demo();
+
+var sm = new SemaphoreDemo();
+sm.Demo();
