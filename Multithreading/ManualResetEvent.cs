@@ -21,7 +21,7 @@ namespace Multithreading
                     thread.Name = $"Thread {i}";
                     thread.Start();
                 }
-
+                Thread.CurrentThread.Name = "Master thread";
 
                 Console.ReadLine();
 

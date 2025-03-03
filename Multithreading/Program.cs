@@ -50,5 +50,17 @@ using Multithreading;
 //var ms = new ManualResetEventDemo();
 //ms.Demo();
 
-var tw= new TwoWaySignalingDemo();
-tw.Demo();
+//var tw = new TwoWaySignalingDemo();
+//tw.Demo();
+
+//var dl = new Deadlock();
+//dl.Demo();
+
+//var ts = new ThreadStateDemo();
+//ts.Demo();
+
+//var tp = new ThreadPoolDemo();
+//tp.Demo();
+
+var ex = new ExceptionsDemo();
+ex.Demo();
